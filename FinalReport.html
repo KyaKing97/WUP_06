@@ -208,16 +208,74 @@ basicCC + geom_bar(stat=&quot;identity&quot;, position = &quot;dodge&quot;)</cod
 <div id="numerical-descriptive-results" class="section level3">
 <h3>Numerical Descriptive Results</h3>
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
+<pre class="r"><code>table1 &lt;- xtabs(~BIGBANG + POSTLIFE, data=GSS)
+rowPerc(table1)</code></pre>
+<pre><code>##        POSTLIFE
+## BIGBANG     NO    YES  Total
+##   False   8.33  91.67 100.00
+##   True   18.29  81.71 100.00</code></pre>
+<pre class="r"><code>colPerc(table1)</code></pre>
+<pre><code>##        POSTLIFE
+## BIGBANG     NO    YES
+##   False  34.78  56.77
+##   True   65.22  43.23
+##   Total 100.00 100.00</code></pre>
+<p>The Numerical summary shows that twice as many people that believe in the BIGBANG theory do not believe in the POSTLIFE.</p>
 </div>
 </div>
 <div id="inferential-results" class="section level2">
 <h2>Inferential Results</h2>
 <!--State hypothesis clearly.  Make sure your discussion of the inferential test covers all the aspects that the test output produces, such as test statistic, p-value etc.  Make a decision about the null hypothesis, explain the assumptions on which the selected test/procedure was based, and why the chosen procedure satisfys the assumptions and is appropriate to answer the research question!-->
+<pre class="r"><code>chisq.test(table1)</code></pre>
+<pre><code>## 
+##  Pearson&#39;s Chi-squared test with Yates&#39; continuity correction
+## 
+## data:  table1
+## X-squared = 3.0637, df = 1, p-value = 0.08006</code></pre>
+<pre class="r"><code>chisqtestGC(table1)</code></pre>
+<pre><code>## Pearson&#39;s Chi-squared test with Yates&#39; continuity correction 
+## 
+## Observed Counts:
+##        POSTLIFE
+## BIGBANG NO YES
+##   False  8  88
+##   True  15  67
+## 
+## Counts Expected by Null:
+##        POSTLIFE
+## BIGBANG   NO  YES
+##   False 12.4 83.6
+##   True  10.6 71.4
+## 
+## Contributions to the chi-square statistic:
+##        POSTLIFE
+## BIGBANG   NO  YES
+##   False 1.56 0.23
+##   True  1.83 0.27
+## 
+## 
+## Chi-Square Statistic = 3.0637 
+## Degrees of Freedom of the table = 1 
+## P-Value = 0.0801</code></pre>
+<pre class="r"><code>fisher.test(table1)</code></pre>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table1
+## p-value = 0.07143
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  0.1410591 1.0968350
+## sample estimates:
+## odds ratio 
+##  0.4081275</code></pre>
+<p>The P-Value = 0.07 which is not really a small number, therefore indicating that there is no real difference between the belief in the BIGBANG theory and the POSTLIFE. Because the P-Value is 0.07 We reject to accept the Null Hypothesis.</p>
 </div>
 </div>
 <div id="discussion-and-conclusion" class="section level1">
 <h1>Discussion and Conclusion</h1>
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+<p>Due to the fact that we failed to reject the null hypothesis, the evidence shows that the belief in the BIGBANG theory and the belief in the POSTLIFE are independent.</p>
 </div>
 
 
